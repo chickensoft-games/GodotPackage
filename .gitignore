@@ -1,0 +1,11 @@
+Chickensoft.GodotPackage/nupkg/
+
+Chickensoft.GodotPackage.Tests/coverage/*
+!Chickensoft.GodotPackage.Tests/coverage/.gdignore
+
+.godot/
+bin/
+obj/
+.generated/
+.vs/
+.DS_Store

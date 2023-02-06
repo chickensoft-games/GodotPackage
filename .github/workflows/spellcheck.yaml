@@ -1,0 +1,27 @@
+name: '🧑‍🏫 Spellcheck'
+on:
+  push:
+
+jobs:
+  spellcheck:
+    name: '🧑‍🏫 Spellcheck'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: '.'
+    steps:
+      - uses: actions/checkout@v3
+        name: 🧾 Checkout
+
+      - uses: streetsidesoftware/cspell-action@v2
+        name: 📝 Check Spelling
+        with:
+          config: './cspell.json'
+          incremental_files_only: true
+          root: '.'
+          files: |
+            **/*.*
+            !**/*.tscn
+            !**/*.import
+            !Chickensoft.GodotPackage.Tests/badges/**/*.*
+            !Chickensoft.GodotPackage.Tests/coverage/**/*.*
