@@ -17,7 +17,6 @@ jobs:
           # Use the .NET SDK from global.json in the root of the repository.
           global-json-file: global.json
 
-      # Publish
       - name: 📦 Publish
         id: publish_nuget
         uses: brandedoutcast/publish-nuget@v2
