@@ -24,9 +24,9 @@
     },
     {
       "matchPackageNames": [
-        "dotnet-sdk"
+        "sdk"
       ],
-      "matchCurrentVersion": "6.0.300"
+      "matchCurrentVersion": "6.0.405"
     }
   ]
 }
