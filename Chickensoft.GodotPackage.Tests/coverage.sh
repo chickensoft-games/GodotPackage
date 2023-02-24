@@ -24,7 +24,7 @@
 
 dotnet build --no-restore
 
-dotnet ~/coverlet/src/coverlet.console/bin/Debug/net5.0/coverlet.console.dll \
+coverlet \
   "./.godot/mono/temp/bin/Debug" --verbosity detailed \
   --target $GODOT4 \
   --targetargs "--run-tests --coverage --quit-on-finish" \
