@@ -5,6 +5,7 @@
     ":semanticCommits"
   ],
   "prHourlyLimit": 2,
+  "versioning": "loose",
   "packageRules": [
     {
       "matchPackagePatterns": [
@@ -19,7 +20,7 @@
         "Godot.NET.Sdk",
         "Chickensoft"
       ],
-      "allowedVersions": "/^(\\d+\\.\\d+\\.\\d+)(-(beta)\\.(\\d+)(\\.\\d+)*)?$/"
+      "allowedVersions": "/^(\\d+\\.\\d+\\.\\d+)(-(beta|rc)\\.(\\d+)(\\.\\d+)*)?$/"
     },
     {
       "matchPackageNames": [
