@@ -129,7 +129,10 @@
     }
   },
   "markdownlint.config": {
-    "MD033": false // Allow html in markdown.
+    // Allow html in markdown.
+    "MD033": false,
+    // Allow non-unique heading names so we don't break the changelog.
+    "MD024": false
   },
   "markdownlint.ignore": [
     "**/LICENSE"
