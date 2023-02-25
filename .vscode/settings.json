@@ -2,12 +2,12 @@
   "[csharp]": {
     "editor.codeActionsOnSave": {
       "source.addMissingImports": true,
-      "source.organizeImports": true,
-      "source.fixAll": true
+      "source.fixAll": true,
+      "source.organizeImports": true
     },
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "editor.formatOnType": false,
+    "editor.formatOnType": false
   },
   "csharp.semanticHighlighting.enabled": true,
   "editor.semanticHighlighting.enabled": true,
@@ -129,8 +129,7 @@
     }
   },
   "markdownlint.config": {
-    // Allow non-unique heading names so we don't break the changelog.
-    "MD024": false
+    "MD033": false // Allow html in markdown.
   },
   "markdownlint.ignore": [
     "**/LICENSE"
