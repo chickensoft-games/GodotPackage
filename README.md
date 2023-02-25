@@ -4,6 +4,12 @@
 
 A .NET template for quickly creating a C# nuget package for use with Godot 4.
 
+---
+
+<p align="center">
+<img alt="Cardboard Box with Chickensoft Logo" src="Chickensoft.GodotPackage/icon.png" width="200">
+</p>
+
 ## 🥚 Getting Started
 
 This template allows you to easily create a nuget package for use in Godot 4 C# projects. Microsoft's `dotnet` tool allows you to easily create, install, and use templates.
