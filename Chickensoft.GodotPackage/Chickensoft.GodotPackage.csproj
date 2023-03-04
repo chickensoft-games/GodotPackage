@@ -14,9 +14,9 @@
     <Title>Chickensoft.GodotPackage</Title>
     <Version>1.0.0</Version>
     <Description />
-    <Copyright>© 2023 YourName</Copyright>
-    <Authors>YourName</Authors>
-    <Company>YourName</Company>
+    <Copyright>© 2023 Your Name</Copyright>
+    <Authors>Your Name</Authors>
+    <Company>Your Name</Company>
 
     <PackageId>Chickensoft.GodotPackage</PackageId>
     <PackageReleaseNotes>Chickensoft.GodotPackage release.</PackageReleaseNotes>
@@ -27,7 +27,7 @@
     <PackageProjectUrl></PackageProjectUrl>
 
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/chickensoft-games/chicken</RepositoryUrl>
+    <RepositoryUrl></RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
