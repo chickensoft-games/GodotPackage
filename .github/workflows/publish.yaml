@@ -29,5 +29,5 @@ jobs:
           echo "📦 Publishing package: $nuget_package"
           
           # publish the nuget package
-          dotnet nuget push "$nuget_package" --api-key ${{ secrets.NUGET_KEY }}  --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "$nuget_package" --api-key ${{ secrets.NUGET_API_KEY }}  --source https://api.nuget.org/v3/index.json --skip-duplicate
     
