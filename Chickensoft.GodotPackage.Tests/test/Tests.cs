@@ -9,5 +9,5 @@ public partial class Tests : Node2D {
   /// Called when the node enters the scene tree for the first time.
   /// </summary>
   public override void _Ready()
-    => GoTest.RunTests(Assembly.GetExecutingAssembly(), this);
+	=> GoTest.RunTests(Assembly.GetExecutingAssembly(), this);
 }
