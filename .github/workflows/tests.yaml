@@ -23,26 +23,6 @@ jobs:
       - name: 🧾 Checkout
         uses: actions/checkout@v3
 
-      - name: 📎 Infer Godot Version
-        id: infer_godot_version
-        run: |
-          replace_last_period() {
-            local version="$1"
-            local prerelease="${version##*-}"
-            if [ "$prerelease" != "$version" ]; then
-              prerelease="${prerelease//./}"
-              version="${version%-*}-$prerelease"
-            fi
-            echo "$version"
-          }
-          # Load the Godot version from the global.json file in the repository
-          # and convert it to the format required by setup-godot.
-          GODOT_VERSION=$(cat global.json | grep -o '"Godot.NET.Sdk": "[^"]*' \
-            | grep -o '[^"]*$')
-          GODOT_VERSION=$(replace_last_period "$GODOT_VERSION")
-          echo "🤖 Inferred setup-godot version: $GODOT_VERSION"
-          echo "godot_version=$GODOT_VERSION" >> $GITHUB_OUTPUT
-
       - name: 💽 Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
@@ -62,7 +42,7 @@ jobs:
           #
           # This allows checks on renovatebot PR's to succeed whenever
           # renovatebot updates the Godot SDK version.
-          version: ${{ steps.infer_godot_version.outputs.godot_version }}
+          version: global.json
 
       - name: 🔬 Verify Setup
         run: |
