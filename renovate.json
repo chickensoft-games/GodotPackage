@@ -21,12 +21,6 @@
         "Chickensoft"
       ],
       "allowedVersions": "/^(\\d+\\.\\d+\\.\\d+)(-(beta|rc)\\.(\\d+)(\\.\\d+)*)?$/"
-    },
-    {
-      "matchPackageNames": [
-        "dotnet-sdk"
-      ],
-      "matchCurrentVersion": "6.0.405"
     }
   ]
 }

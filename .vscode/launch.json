@@ -6,7 +6,7 @@
     // the following to your .zshrc, .bashrc, or .bash_profile file:
     // export GODOT4="/Applications/Godot.app/Contents/MacOS/Godot"
     {
-      "name": "Debug Tests",
+      "name": "🧪 Debug Tests",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
@@ -20,7 +20,7 @@
       "stopAtEntry": false,
     },
     {
-      "name": "Debug Current Test",
+      "name": "🔬 Debug Current Test",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",

@@ -1,6 +1,6 @@
 # Chickensoft.GodotPackage
 
-[![Chickensoft Badge][chickensoft-badge]][chickensoft-website] [![Discord][discord-badge]][discord] ![line coverage][line-coverage] ![branch coverage][branch-coverage]
+[![Chickensoft Badge][chickensoft-badge]][chickensoft-website] [![Discord][discord-badge]][discord] [![Read the docs][read-the-docs-badge]][docs] ![line coverage][line-coverage] ![branch coverage][branch-coverage]
 
 A .NET template for quickly creating a C# nuget package for use with Godot 4.
 
@@ -149,15 +149,17 @@ The included `renovate.json` includes a few configuration options to limit how o
 <!-- Links -->
 
 <!-- Header -->
-[chickensoft-badge]: https://chickensoft.games/images/chickensoft/chickensoft_badge.svg
+[chickensoft-badge]: https://raw.githubusercontent.com/chickensoft-games/chickensoft_site/main/static/img/badges/chickensoft_badge.svg
 [chickensoft-website]: https://chickensoft.games
+[discord-badge]: https://raw.githubusercontent.com/chickensoft-games/chickensoft_site/main/static/img/badges/discord_badge.svg
 [discord]: https://discord.gg/gSjaPgMmYW
-[discord-badge]: https://img.shields.io/badge/Chickensoft%20Discord-%237289DA.svg?style=flat&logo=discord&logoColor=white
+[read-the-docs-badge]: https://raw.githubusercontent.com/chickensoft-games/chickensoft_site/main/static/img/badges/read_the_docs_badge.svg
+[docs]: https://chickensoft.games/docsickensoft%20Discord-%237289DA.svg?style=flat&logo=discord&logoColor=white
 [line-coverage]: Chickensoft.GodotPackage.Tests/badges/line_coverage.svg
 [branch-coverage]: Chickensoft.GodotPackage.Tests/badges/branch_coverage.svg
-[GoDotTest]: https://github.com/chickensoft-games/go_dot_test
 
 <!-- Article -->
+[GoDotTest]: https://github.com/chickensoft-games/go_dot_test
 [setup-docs]: https://chickensoft.games/docs/setup
 [cspell]: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 [Renovatebot]: https://www.mend.io/free-developer-tools/renovate/
