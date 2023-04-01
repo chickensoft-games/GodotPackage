@@ -1,4 +1,14 @@
 {
+  "files": [
+    "**/*.*"
+  ],
+  "ignorePaths": [
+    "**/*.tscn",
+    "**/*.import",
+    "badges/**/*.*",
+    "Chickensoft.GodotPackage.Tests/coverage/**/*.*",
+    "Chickensoft.GodotPackage.Tests/.godot/**/*.*"
+  ],
   "words": [
     "assemblyfilters",
     "branchcoverage",

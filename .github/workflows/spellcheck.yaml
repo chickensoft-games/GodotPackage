@@ -17,11 +17,5 @@ jobs:
         name: 📝 Check Spelling
         with:
           config: './cspell.json'
-          incremental_files_only: true
+          incremental_files_only: false
           root: '.'
-          files: |
-            **/*.*
-            !**/*.tscn
-            !**/*.import
-            !Chickensoft.GodotPackage.Tests/badges/**/*.*
-            !Chickensoft.GodotPackage.Tests/coverage/**/*.*
