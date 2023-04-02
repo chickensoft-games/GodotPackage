@@ -24,11 +24,11 @@ on:
       - completed
 
 jobs:
-  check_if_should_release:
+  auto_release:
     name: 🦾 Auto-Release
     runs-on: ubuntu-latest
     outputs:
-      should_release: ${{ !vars.DISABLE_AUTO_RELEASE && steps.tests.outputs.passed && steps.release.outputs.changed }}
+      should_release: ${{ steps.release.outputs.should_release }}
     steps:
       - name: 🧾 Checkout
         uses: actions/checkout@v3
@@ -39,24 +39,36 @@ jobs:
           echo "passed=${{ github.event.workflow_run.conclusion == 'success' }}" >> "$GITHUB_OUTPUT"
           echo "DISABLE_AUTO_RELEASE=${{ vars.DISABLE_AUTO_RELEASE }}"
 
-      - name: 📄 Determine If Dependencies Have Changed
-        id: release
-        if: ${{ steps.tests.outputs.passed == 'true' }}
+      - name: 📄 Check If Dependencies Changed
+        id: deps
         run: |
           message=$(git log -1 --pretty=%B)
 
           if [[ $message == *"chore(deps): update all dependencies"* ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Dependencies updated: automatically releasing!"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Dependencies not updated: skipping release."
+          fi
+
+      - name: 📝 Check Release Status
+        id: release
+        run: |
+          echo "Tests passed: ${{ steps.tests.outputs.passed }}"
+          echo "Dependencies changed: ${{ steps.deps.outputs.changed }}"
+          echo "DISABLE_AUTO_RELEASE=${{ vars.DISABLE_AUTO_RELEASE }}"
+
+          if [[ ${{ steps.tests.outputs.passed }} == "true" && ${{ steps.deps.outputs.changed }} == "true" && ${{ vars.DISABLE_AUTO_RELEASE }} != "true" ]]; then
+            echo "should_release=true" >> "$GITHUB_OUTPUT"
+            echo "🦾 Creating release!"
+          else
+            echo "should_release=false" >> "$GITHUB_OUTPUT"
+            echo "✋ Not releasing."
           fi
 
   release:
     uses: './.github/workflows/publish.yaml'
     needs: check_if_should_release
-    if: ${{ needs.check_if_should_release.outputs.should_release }}
+    if: ${{ needs.auto_release.outputs.should_release }}
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     with:
