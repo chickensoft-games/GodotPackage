@@ -13,6 +13,8 @@ on:
           - patch
         required: true
   workflow_call:
+    branches:
+      - main
     secrets:
       NUGET_API_KEY:
         description: "NuGet API Key"

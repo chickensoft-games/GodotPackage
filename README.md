@@ -100,7 +100,7 @@ This package includes various GitHub Actions workflows to make developing and de
 
 ### 🚥 Tests
 
-Tests run on every push to the repository. You can configure which platforms you want to run tests on in [`.github/workflows/tests.yaml`](.github/workflows/tests.yaml).
+Tests run on every push or pull request to the repository. You can configure which platforms you want to run tests on in [`.github/workflows/tests.yaml`](.github/workflows/tests.yaml).
 
 By default, tests run each platform (macOS, Windows, and Linux) using the latest beta version of Godot 4.
 
@@ -108,7 +108,7 @@ Tests are executed by running the Godot test project in `Chickensoft.GodotPackag
 
 ### 🧑‍🏫 Spellcheck
 
-A spell check runs on every push to the repository. Spellcheck settings can be configured in [`.github/workflows/spellcheck.yaml`](.github/workflows/spellcheck.yaml)
+A spell check runs on every push or pull request to the repository. Spellcheck settings can be configured in [`.github/workflows/spellcheck.yaml`](.github/workflows/spellcheck.yaml)
 
 The [Code Spell Checker][cspell] plugin for VSCode is recommended to help you catch typos before you commit them. If you need add a word to the dictionary, you can add it to the `cspell.json` file.
 
@@ -116,23 +116,17 @@ You can also words to the local `cspell.json` file from VSCode by hovering over 
 
 ![Fix Spelling](docs/spelling_fix.png)
 
-### 🗂 Version Change
-
-The included workflow in [`.github/workflows/version_change.yaml`](.github/workflows/version_change.yaml) can be manually dispatched to open a pull request that replaces the version number in `Chickensoft.GodotPackage/Chickensoft.GodotPackage.csproj` with the version you specify in the workflow's inputs.
-
-![Version Change Workflow](docs/version_change.png)
-
-### 📦 Publish to Nuget
+### 📦 Publish
 
 The included workflow in [`.github/workflows/publish.yaml`](.github/workflows/publish.yaml) can be manually dispatched when you're ready to publish your package to Nuget.
 
-> To publish to nuget, you need a repository or organization secret named `NUGET_API_KEY` that contains your Nuget API key. The `NUGET_API_KEY` must be a GitHub actions secret to keep it safe!
+The accompanying [`.github/workflows/auto_release.yaml`](.github/workflows/auto_release.yaml) will trigger the publish workflow if it detects a new commit in main that is a routine dependency update from renovatebot. Since Renovatebot is configured to auto-merge dependency updates, your package will automatically be published to Nuget when a new version of Godot.NET.Sdk is released or other packages you depend on are updated. If this behavior is undesired, remove the `"automerge": true` property from [`renovate.json`](./renovate.json).
 
-![Publish Workflow](docs/publish.png)
+> To publish to nuget, you need to configure a repository or organization secret within GitHub named `NUGET_API_KEY` that contains your Nuget API key. Make sure you setup `NUGET_API_KEY` as a **secret** (rather than an environment variable) to keep it safe!
 
 ### 🏚 Renovatebot
 
-This repository includes a [`renovate.json`](./renovate.json) configuration for use with [Renovatebot]. Renovatebot can automatically open pull requests to help you keep your dependencies up to date when it detects new dependency versions have been released.
+This repository includes a [`renovate.json`](./renovate.json) configuration for use with [Renovatebot]. Renovatebot can automatically open and merge pull requests to help you keep your dependencies up to date when it detects new dependency versions have been released.
 
 ![Renovatebot Pull Request](docs/renovatebot_pr.png)
 
@@ -141,6 +135,8 @@ This repository includes a [`renovate.json`](./renovate.json) configuration for 
 The easiest way to add Renovatebot to your repository is to [install it from the GitHub Marketplace][get-renovatebot]. Note that you have to grant it access to each organization and repository you want it to monitor.
 
 The included `renovate.json` includes a few configuration options to limit how often Renovatebot can open pull requests as well as regex's to filter out some poorly versioned dependencies to prevent invalid dependency version updates.
+
+If your project is setup to require approvals before pull requests can be merged *and* you wish to take advantage of Renovatebot's auto-merge feature, you can install the [Renovate Approve][renovate-approve] bot to automatically approve the Renovate dependency PR's. If you need two approvals, you can install the identical [Renovate Approve 2][renovate-approve-2] bot. See [this][about-renovate-approvals] for more information.
 
 ---
 
@@ -164,3 +160,6 @@ The included `renovate.json` includes a few configuration options to limit how o
 [cspell]: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 [Renovatebot]: https://www.mend.io/free-developer-tools/renovate/
 [get-renovatebot]: https://github.com/apps/renovate
+[renovate-approve]: https://github.com/apps/renovate-approve
+[renovate-approve-2]: https://github.com/apps/renovate-approve-2
+[about-renovate-approvals]: https://stackoverflow.com/a/66575885
