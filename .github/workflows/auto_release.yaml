@@ -1,8 +1,10 @@
-# This workflow automatically looks for pushes to main whose last commit
-# message contains the phrase "chore(deps): update all dependencies".
-# If it finds such a commit, and the testing workflow has passed, it will
-# automatically release a new version of the project by running the publish
-# workflow.
+# This workflow will run whenever tests finish running. If tests pass, it will
+# look at the last commit message to see if it contains the phrase
+# "chore(deps): update all dependencies".
+#
+# If it finds a commit with that phrase, and the testing workflow has passed,
+# it will automatically release a new version of the project by running the
+# publish workflow.
 #
 # The commit message phrase above is always used by renovatebot when opening
 # PR's to update dependencies. If you have renovatebot enabled and set to
@@ -35,6 +37,7 @@ jobs:
         id: tests
         run:
           echo "passed=${{ github.event.workflow_run.conclusion == 'success' }}" >> "$GITHUB_OUTPUT"
+          echo "DISABLE_AUTO_RELEASE=${{ env.DISABLE_AUTO_RELEASE }}"
 
       - name: 📄 Determine If Dependencies Have Changed
         id: release
@@ -53,7 +56,7 @@ jobs:
   release:
     uses: './.github/workflows/publish.yaml'
     needs: check_if_should_release
-    if: ${{ needs.check_if_should_release.outputs.should_release == 'true' }}
+    if: ${{ needs.check_if_should_release.outputs.should_release }}
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     with:

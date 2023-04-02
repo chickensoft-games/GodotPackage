@@ -59,7 +59,7 @@ jobs:
         run: godot --headless --build-solutions --quit || exit 0
 
       - name: 🦺 Build Projects
-        run: dotnet build # --configuration Release
+        run: dotnet build
 
       - name: 🧪 Run Tests
         working-directory: Chickensoft.GodotPackage.Tests
