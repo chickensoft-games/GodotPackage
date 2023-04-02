@@ -37,7 +37,6 @@ jobs:
         id: tests
         run: |
           echo "passed=${{ github.event.workflow_run.conclusion == 'success' }}" >> "$GITHUB_OUTPUT"
-          echo "DISABLE_AUTO_RELEASE=${{ vars.DISABLE_AUTO_RELEASE }}"
 
       - name: 📄 Check If Dependencies Changed
         id: deps
@@ -59,16 +58,16 @@ jobs:
 
           if [[ ${{ steps.tests.outputs.passed }} == "true" && ${{ steps.deps.outputs.changed }} == "true" && ${{ vars.DISABLE_AUTO_RELEASE }} != "true" ]]; then
             echo "should_release=true" >> "$GITHUB_OUTPUT"
-            echo "🦾 Creating release!"
+            echo "🦾 Creating a release!"
           else
             echo "should_release=false" >> "$GITHUB_OUTPUT"
-            echo "✋ Not releasing."
+            echo "✋ Not creating a release."
           fi
 
   release:
     uses: './.github/workflows/publish.yaml'
     needs: auto_release
-    if: ${{ needs.auto_release.outputs.should_release }}
+    if: needs.auto_release.outputs.should_release == 'true'
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     with:
