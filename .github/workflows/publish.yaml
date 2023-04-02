@@ -1,8 +1,6 @@
 name: '📦 Publish'
 on:
   workflow_dispatch:
-    branches:
-      - main
     inputs:
       bump:
         description: "Version Bump Method"
