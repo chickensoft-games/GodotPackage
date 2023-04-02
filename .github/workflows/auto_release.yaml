@@ -28,7 +28,7 @@ jobs:
     name: 🦾 Auto-Release
     runs-on: ubuntu-latest
     outputs:
-      should_release: ${{ env.DISABLE_AUTO_RELEASE == 'true' && steps.tests.outputs.passed && steps.release.outputs.changed }}
+      should_release: ${{ !vars.DISABLE_AUTO_RELEASE && steps.tests.outputs.passed && steps.release.outputs.changed }}
     steps:
       - name: 🧾 Checkout
         uses: actions/checkout@v3
@@ -37,7 +37,7 @@ jobs:
         id: tests
         run: |
           echo "passed=${{ github.event.workflow_run.conclusion == 'success' }}" >> "$GITHUB_OUTPUT"
-          echo "DISABLE_AUTO_RELEASE=${{ env.DISABLE_AUTO_RELEASE }}"
+          echo "DISABLE_AUTO_RELEASE=${{ vars.DISABLE_AUTO_RELEASE }}"
 
       - name: 📄 Determine If Dependencies Have Changed
         id: release
