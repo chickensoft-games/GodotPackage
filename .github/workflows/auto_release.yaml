@@ -35,7 +35,7 @@ jobs:
 
       - name: 🧑‍🔬 Check Test Results
         id: tests
-        run:
+        run: |
           echo "passed=${{ github.event.workflow_run.conclusion == 'success' }}" >> "$GITHUB_OUTPUT"
           echo "DISABLE_AUTO_RELEASE=${{ env.DISABLE_AUTO_RELEASE }}"
 
