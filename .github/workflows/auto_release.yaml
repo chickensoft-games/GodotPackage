@@ -11,7 +11,7 @@
 # automatically merge in dependency updates, this can automatically release and
 # publish the updated version of the project.
 #
-# You can disable this action by setting the DISABLE_AUTO_RELEASE environment
+# You can disable this action by setting the DISABLE_AUTO_RELEASE repository
 # variable to true.
 
 name: 🦾 Auto-Release
