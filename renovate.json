@@ -12,7 +12,8 @@
         "*"
       ],
       "groupName": "all dependencies",
-      "groupSlug": "all-deps"
+      "groupSlug": "all-deps",
+      "automerge": true
     },
     {
       "matchPackagePrefixes": [

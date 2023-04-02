@@ -11,6 +11,7 @@
   ],
   "words": [
     "assemblyfilters",
+    "automerge",
     "branchcoverage",
     "brandedoutcast",
     "camelcase",
@@ -23,16 +24,13 @@
     "godotengine",
     "godotpackage",
     "issuecomment",
-    "justalemon",
     "lcov",
-    "lihop",
     "linecoverage",
     "methodcoverage",
     "missingall",
     "msbuild",
     "MSYS",
     "nameof",
-    "Nerdbank",
     "netstandard",
     "NOLOGO",
     "nupkg",
@@ -41,8 +39,6 @@
     "OPTOUT",
     "paramref",
     "pascalcase",
-    "Postinitialize",
-    "Predelete",
     "renovatebot",
     "reportgenerator",
     "reporttypes",
@@ -55,7 +51,6 @@
     "typeparam",
     "typeparamref",
     "ulong",
-    "Unparented",
     "Xunit"
   ]
 }

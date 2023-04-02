@@ -1,0 +1,60 @@
+# This workflow automatically looks for pushes to main whose last commit
+# message contains the phrase "chore(deps): update all dependencies".
+# If it finds such a commit, and the testing workflow has passed, it will
+# automatically release a new version of the project by running the publish
+# workflow.
+#
+# The commit message phrase above is always used by renovatebot when opening
+# PR's to update dependencies. If you have renovatebot enabled and set to
+# automatically merge in dependency updates, this can automatically release and
+# publish the updated version of the project.
+#
+# You can disable this action by setting the DISABLE_AUTO_RELEASE environment
+# variable to true.
+
+name: 🦾 Auto-Release
+on:
+  workflow_run:
+    workflows: ["🚥 Tests"]
+    branches:
+      - main
+    types:
+      - completed
+
+jobs:
+  check_if_should_release:
+    name: 🦾 Auto-Release
+    runs-on: ubuntu-latest
+    outputs:
+      should_release: ${{ !env.DISABLE_AUTO_RELEASE && steps.tests.outputs.passed && steps.release.outputs.changed }}
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v3
+
+      - name: 🧑‍🔬 Check Test Results
+        id: tests
+        run:
+          echo "passed=${{ github.event.workflow_run.conclusion == 'success' }}" >> "$GITHUB_OUTPUT"
+
+      - name: 📄 Determine If Dependencies Have Changed
+        id: release
+        if: ${{ steps.tests.outputs.passed == 'true' }}
+        run: |
+          message=$(git log -1 --pretty=%B)
+
+          if [[ $message == *"chore(deps): update all dependencies"* ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Dependencies updated: automatically releasing!"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Dependencies not updated: skipping release."
+          fi
+
+  release:
+    uses: './.github/workflows/publish.yaml'
+    needs: check_if_should_release
+    if: ${{ needs.check_if_should_release.outputs.should_release == 'true' }}
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    with:
+      bump: patch
