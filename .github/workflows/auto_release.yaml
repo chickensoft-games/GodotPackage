@@ -54,9 +54,10 @@ jobs:
         run: |
           echo "Tests passed: ${{ steps.tests.outputs.passed }}"
           echo "Dependencies changed: ${{ steps.deps.outputs.changed }}"
-          echo "DISABLE_AUTO_RELEASE=${{ vars.DISABLE_AUTO_RELEASE }}"
+          disable_auto_release='${{ vars.DISABLE_AUTO_RELEASE }}'
+          echo "DISABLE_AUTO_RELEASE=$disable_auto_release"
 
-          if [[ ${{ steps.tests.outputs.passed }} == "true" && ${{ steps.deps.outputs.changed }} == "true" && ${${{ vars.DISABLE_AUTO_RELEASE }}+'false'} != "true" ]]; then
+          if [[ ${{ steps.tests.outputs.passed }} == "true" && ${{ steps.deps.outputs.changed }} == "true" && $disable_auto_release != "true" ]]; then
             echo "should_release=true" >> "$GITHUB_OUTPUT"
             echo "🦾 Creating a release!"
           else
