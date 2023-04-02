@@ -7,7 +7,10 @@
     "**/*.import",
     "Chickensoft.GodotPackage.Tests/badges/**/*.*",
     "Chickensoft.GodotPackage.Tests/coverage/**/*.*",
-    "Chickensoft.GodotPackage.Tests/.godot/**/*.*"
+    "Chickensoft.GodotPackage.Tests/.godot/**/*.*",
+    "**/obj/**/*.*",
+    "**/bin/**/*.*",
+    "Chickensoft.GodotPackage/nupkg/**/*.*"
   ],
   "words": [
     "assemblyfilters",

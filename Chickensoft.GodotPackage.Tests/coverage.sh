@@ -39,7 +39,7 @@ coverlet \
 # If you want to exclude them, replace the string below with the names of
 # the assemblies to ignore. e.g.,
 # ASSEMBLIES_TO_REMOVE="-AssemblyToRemove1;-AssemblyToRemove2"
-ASSEMBLIES_TO_REMOVE=""
+ASSEMBLIES_TO_REMOVE="-Chickensoft.GodotPackage.Tests"
 
 reportgenerator \
   -reports:"./coverage/coverage.xml" \
