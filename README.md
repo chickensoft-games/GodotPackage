@@ -70,7 +70,9 @@ Please see `test/ExampleTest.cs` and the [GoDotTest] readme for more examples.
 
 ## 🚦 Test Coverage
 
-Code coverage requires a few `dotnet` global tools to be installed first.
+Code coverage requires a few `dotnet` global tools to be installed first. You should install these tools from the root of the project directory.
+
+The `nuget.config` file in the root of the project allows the correct version of `coverlet` to be installed from the coverlet nightly distributions. Overriding the coverlet version will be required [until coverlet releases a stable version with the fixes that allow it to work with Godot 4][coverlet-issues].
 
 ```sh
 dotnet tool install --global coverlet.console
@@ -88,7 +90,7 @@ You can collect code coverage and generate coverage badges by running the bash s
 chmod +x test/.coverage.sh
 
 # Run code coverage:
-cd test
+cd Chickensoft.GodotPackage.Tests
 ./coverage.sh
 ```
 
@@ -142,9 +144,6 @@ If your project is setup to require approvals before pull requests can be merged
 
 🐣 Package generated from a 🐤 Chickensoft Template — <https://chickensoft.games>
 
-<!-- Links -->
-
-<!-- Header -->
 [chickensoft-badge]: https://raw.githubusercontent.com/chickensoft-games/chickensoft_site/main/static/img/badges/chickensoft_badge.svg
 [chickensoft-website]: https://chickensoft.games
 [discord-badge]: https://raw.githubusercontent.com/chickensoft-games/chickensoft_site/main/static/img/badges/discord_badge.svg
@@ -154,7 +153,6 @@ If your project is setup to require approvals before pull requests can be merged
 [line-coverage]: Chickensoft.GodotPackage.Tests/badges/line_coverage.svg
 [branch-coverage]: Chickensoft.GodotPackage.Tests/badges/branch_coverage.svg
 
-<!-- Article -->
 [GoDotTest]: https://github.com/chickensoft-games/go_dot_test
 [setup-docs]: https://chickensoft.games/docs/setup
 [cspell]: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
@@ -163,3 +161,4 @@ If your project is setup to require approvals before pull requests can be merged
 [renovate-approve]: https://github.com/apps/renovate-approve
 [renovate-approve-2]: https://github.com/apps/renovate-approve-2
 [about-renovate-approvals]: https://stackoverflow.com/a/66575885
+[coverlet-issues]: https://github.com/coverlet-coverage/coverlet/issues/1422
