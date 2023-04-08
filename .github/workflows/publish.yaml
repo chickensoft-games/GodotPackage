@@ -34,7 +34,7 @@ jobs:
           lfs: true
           submodules: 'recursive'
 
-      - name: 🔎 Read Current Project Verson
+      - name: 🔎 Read Current Project Version
         uses: KageKirin/get-csproj-version@v1.0.0
         id: current-version
         with:
