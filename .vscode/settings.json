@@ -162,5 +162,6 @@
       "icon": "terminal-powershell",
       "source": "PowerShell"
     }
-  }
+  },
+  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
 }
