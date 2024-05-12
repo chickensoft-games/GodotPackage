@@ -30,6 +30,10 @@ jobs:
     steps:
       - name: 🧾 Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_BASIC }}
+          lfs: true
+          submodules: 'recursive'
 
       - name: 💽 Setup .NET SDK
         uses: actions/setup-dotnet@v4
@@ -51,11 +55,6 @@ jobs:
           # This allows checks on renovatebot PR's to succeed whenever
           # renovatebot updates the Godot SDK version.
           version: global.json
-
-      - name: 🔬 Verify Setup
-        run: |
-          dotnet --version
-          godot --version
 
       - name: 🧑‍🔬 Generate .NET Bindings
         working-directory: Chickensoft.GodotPackage.Tests

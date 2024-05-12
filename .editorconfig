@@ -456,3 +456,15 @@ dotnet_diagnostic.RCS1161.severity = none
 dotnet_diagnostic.RCS1165.severity = none
 # Allow keyword-based names so that parameter names like `@event` can be used.
 dotnet_diagnostic.CA1716.severity = none
+# Let me put comments where I like
+dotnet_diagnostic.RCS1181.severity = none
+# Allow me to use the word Collection if I want.
+dotnet_diagnostic.CA1711.severity = none
+# No primary constructors — not supported well by tooling.
+dotnet_diagnostic.IDE0290.severity = none
+# Let me write dumb if statements for readability.
+dotnet_diagnostic.IDE0046.severity = none
+# Don't make me use expression bodies for methods
+dotnet_diagnostic.IDE0022.severity = none
+# Don't make me populate a switch expression redundantly
+dotnet_diagnostic.IDE0072.severity = none
