@@ -23,7 +23,7 @@ dotnet new chickenpackage --name "MyPackageName" --param:author "My Name"
 
 # Use Godot to generate files needed to compile the package's test project.
 cd MyPackageName/MyPackageName.Tests/
-godot4 --headless --build-solutions --quit
+$GODOT --headless --build-solutions --quit
 dotnet build
 ```
 
@@ -53,7 +53,7 @@ You can debug the included test project for your package in `Chickensoft.GodotPa
 
 The launch profiles will trigger a build (without restoring packages) and then instruct .NET to run Godot 4 (while communicating with VSCode for interactive debugging).
 
-> **Important:** You must setup a `GODOT4` environment variable for the launch configurations above. If you haven't done so already, please see the [Chickensoft Setup Docs][setup-docs].
+> **Important:** You must setup a `GODOT` environment variable for the launch configurations above. If you're using [GodotEnv] to install and manage Godot versions, you're already setup! For more info, see the [Chickensoft Setup Docs][setup-docs].
 
 ## 👷 Testing
 
@@ -71,8 +71,6 @@ Please see `test/ExampleTest.cs` and the [GoDotTest] readme for more examples.
 ## 🚦 Test Coverage
 
 Code coverage requires a few `dotnet` global tools to be installed first. You should install these tools from the root of the project directory.
-
-The `nuget.config` file in the root of the project allows the correct version of `coverlet` to be installed from the coverlet nightly distributions. Overriding the coverlet version will be required [until coverlet releases a stable version with the fixes that allow it to work with Godot 4][coverlet-issues].
 
 ```sh
 dotnet tool install --global coverlet.console
@@ -118,9 +116,9 @@ You can also words to the local `cspell.json` file from VSCode by hovering over 
 
 ![Fix Spelling](docs/spelling_fix.png)
 
-### 📦 Publish
+### 📦 Release
 
-The included workflow in [`.github/workflows/publish.yaml`](.github/workflows/publish.yaml) can be manually dispatched when you're ready to publish your package to Nuget.
+The included workflow in [`.github/workflows/release.yaml`](.github/workflows/publish.yaml) can be manually dispatched when you're ready to make a new release. Once you specify `major`, `minor`, or `patch` for the version bump strategy, the workflow will build your package with the updated version and release it on both GitHub and nuget.
 
 The accompanying [`.github/workflows/auto_release.yaml`](.github/workflows/auto_release.yaml) will trigger the publish workflow if it detects a new commit in main that is a routine dependency update from renovatebot. Since Renovatebot is configured to auto-merge dependency updates, your package will automatically be published to Nuget when a new version of Godot.NET.Sdk is released or other packages you depend on are updated. If this behavior is undesired, remove the `"automerge": true` property from [`renovate.json`](./renovate.json).
 
@@ -161,4 +159,4 @@ If your project is setup to require approvals before pull requests can be merged
 [renovate-approve]: https://github.com/apps/renovate-approve
 [renovate-approve-2]: https://github.com/apps/renovate-approve-2
 [about-renovate-approvals]: https://stackoverflow.com/a/66575885
-[coverlet-issues]: https://github.com/coverlet-coverage/coverlet/issues/1422
+[GodotEnv]: https://github.com/chickensoft-games/GodotEnv

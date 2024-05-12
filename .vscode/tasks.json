@@ -36,22 +36,5 @@
         "clear": true
       },
     },
-    {
-      "label": "build-solutions",
-      "group": "test",
-      "command": "dotnet restore; ${env:GODOT4} --headless --build-solutions --quit || exit 0",
-      "type": "shell",
-      "options": {
-        "cwd": "${workspaceFolder}/Chickensoft.GodotPackage.Tests"
-      },
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": false,
-        "clear": false
-      }
-    },
   ]
 }

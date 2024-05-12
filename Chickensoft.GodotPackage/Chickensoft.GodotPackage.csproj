@@ -1,21 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <LangVersion>preview</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Nullable>enable</Nullable>
     <CopyAllFiles>true</CopyAllFiles>
     <RootNamespace>Chickensoft.GodotPackage</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <OutputPath>./nupkg</OutputPath>
     <DebugType>portable</DebugType>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <Title>Chickensoft.GodotPackage</Title>
-    <Version>1.0.0</Version>
-    <Description />
-    <Copyright>© 2023 Your Name</Copyright>
+    <Version>0.0.0-devbuild</Version>
+    <Description>Chickensoft.GodotPackage description.</Description>
+    <Copyright>© 2024 Your Name</Copyright>
     <Authors>Your Name</Authors>
     <Company>Your Name</Company>
 
@@ -39,6 +39,14 @@
 
   <ItemGroup>
     <!-- Dependencies go here. -->
+    <PackageReference Include="IsExternalInit" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="SauceControl.InheritDoc" Version="2.0.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="GodotSharp" Version="4.2.2" />
   </ItemGroup>
 </Project>
