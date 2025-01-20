@@ -74,8 +74,8 @@ jobs:
           include: Chickensoft.GodotPackage/Chickensoft.GodotPackage.csproj
 
       - name: 📦 Build
-        run: dotnet build \
-          Chickensoft.GodotPackage/Chickensoft.GodotPackage.csproj -c Release
+        working-directory: Chickensoft.GodotPackage
+        run: dotnet build -c Release
 
       - name: 🔎 Get Package Path
         id: package-path
