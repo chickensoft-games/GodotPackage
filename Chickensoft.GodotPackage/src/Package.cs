@@ -3,7 +3,8 @@ namespace Chickensoft.GodotPackage;
 /// <summary>
 /// Package class.
 /// </summary>
-public class Package {
+public class Package
+{
   /// <summary>
   /// Method.
   /// </summary>
